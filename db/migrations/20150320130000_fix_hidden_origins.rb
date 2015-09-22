@@ -12,6 +12,8 @@ Sequel.migration do
     hidden = self[:content].where(hidden: true, hidden_origin: nil)
     puts "Run #hide! on these ids when the migrations have completed:"
     p    hidden.map { |row| row[:id] }
+
+    self[:content].update(hidden: false, hidden_origin: nil)
     # if defined?(Content)
     #   aliases = Content.exclude(target_id: nil)
     #   aliases.each do |a|
